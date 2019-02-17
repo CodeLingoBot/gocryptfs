@@ -54,14 +54,14 @@ func setattrlist(path *byte, list unsafe.Pointer, buf unsafe.Pointer, size uintp
 	return
 }
 
-// Sorry, fallocate is not available on OSX at all and
+// EnospcPrealloc: Sorry, fallocate is not available on OSX at all and
 // fcntl F_PREALLOCATE is not accessible from Go.
 // See https://github.com/rfjakob/gocryptfs/issues/18 if you want to help.
 func EnospcPrealloc(fd int, off int64, len int64) error {
 	return nil
 }
 
-// See above.
+// Fallocate: See above.
 func Fallocate(fd int, mode uint32, off int64, len int64) error {
 	return syscall.EOPNOTSUPP
 }

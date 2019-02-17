@@ -69,7 +69,7 @@ func IsLongContent(cName string) bool {
 	return NameType(cName) == LongNameContent
 }
 
-// ReadLongName - read cName + ".name" from the directory opened as dirfd.
+// ReadLongNameAt: - read cName + ".name" from the directory opened as dirfd.
 //
 // Symlink-safe through Openat().
 func ReadLongNameAt(dirfd int, cName string) (string, error) {
@@ -101,7 +101,7 @@ func ReadLongNameAt(dirfd int, cName string) (string, error) {
 	return string(buf[0:n]), nil
 }
 
-// DeleteLongName deletes "hashName.name" in the directory opened at "dirfd".
+// DeleteLongNameAt: deletes "hashName.name" in the directory opened at "dirfd".
 //
 // This function is symlink-safe through the use of Unlinkat().
 func DeleteLongNameAt(dirfd int, hashName string) error {
@@ -112,7 +112,7 @@ func DeleteLongNameAt(dirfd int, hashName string) error {
 	return err
 }
 
-// WriteLongName encrypts plainName and writes it into "hashName.name".
+// WriteLongNameAt: encrypts plainName and writes it into "hashName.name".
 // For the convenience of the caller, plainName may also be a path and will be
 // Base()named internally.
 //
